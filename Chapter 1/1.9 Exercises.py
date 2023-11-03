@@ -11,7 +11,7 @@ import numpy as np
 
 #%%
 #Q2
-## Rotation of Frame Matrix
+## Rotation of Frame Matrix about x
 
 def Q_xaxis (rad):
     T=np.zeros((3,3))
@@ -29,3 +29,23 @@ def Q_xaxis (rad):
             
 BA_T = Q_xaxis((np.pi/3))
 print(BA_T)
+
+#%%
+#Q3
+
+# Rotation of Frame Matrix about y
+def Q_yaxis (rad):
+    T=np.zeros((3,3))
+    theta = rad
+    for i in range(0,len(T)):
+        if i == 1:
+            T[i][1]= 1
+        else:
+            for j in range(0,len(T[i])):
+                if j == 1:
+                    T[i][j] = 0
+                else:
+                    T[i][j] = np.cos(theta - (j-i)*np.pi/2)
+    return T
+
+#Form 
