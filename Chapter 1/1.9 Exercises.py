@@ -134,6 +134,7 @@ def Rotation (u, a): # u is a vector, a is angle of rotation
     
     return Q
 
+print (Rotation(n, theta))
         
         
         
