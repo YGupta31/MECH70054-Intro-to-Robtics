@@ -67,5 +67,15 @@ def MatMul_hom (T, P): #Matrix Multiplication of a homogenous transformation T a
     P_hom = P+[1] #convert P into homogeneous form
     P_out = np.matmul(T,P_hom)
     
-    P_A = P[0:3] # remove homogeenous form
-    return P_A
+    P_final = P_out[0:3] # remove homogeenous form
+    return P_final
+
+#Answer
+
+theta = np.pi/6 # theta == 30deg
+B_0 = [2,4,3]
+P_B = [2,4,1]
+BA_T = T_hom(Q_yaxis(theta), B_0)
+print(BA_T)#check homogenous tarnsformation
+P_A = MatMul_hom(BA_T, P_B)
+print(P_A) #check position vector
