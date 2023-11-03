@@ -90,7 +90,7 @@ R=[[(np.sqrt(2))/2, -0.5, -0.5], [0.5, ((np.sqrt(2))/4)+0.5, ((np.sqrt(2))/4)-0.
 def decomp_Rot (Q): #Function to decompose a rotation matrix Q into its angle and unit vector
     alpha = np.arccos((np.trace(Q)-1)/2) # gives the angle in radians
     # determine axis of rotatin vector
-    u = np.zeros(3,1) # form size of rotation axis
+    u = np.zeros((3,1)) # form size of rotation axis
     u[0] = (1/(2*np.sin(alpha)))*(Q[2][1]-Q[1][2])
     u[1] = (1/(2*np.sin(alpha)))*(Q[0][2]-Q[2][0])
     u[2] = (1/(2*np.sin(alpha)))*(Q[2][0]-Q[0][2])
@@ -98,11 +98,9 @@ def decomp_Rot (Q): #Function to decompose a rotation matrix Q into its angle an
 
     return (u,alpha)
 
+#Answer
+
+print(decomp_Rot(R))    
     
-    
-    
-    
-    
-    
-    
+#4c   
     
