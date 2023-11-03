@@ -119,7 +119,21 @@ e = Eular_Param(n, theta)
 
 print(e)
         
-        
+#%%
+#Q5
+n=[0,1/np.sqrt(2),-1/np.sqrt(2)]
+theta = -np.pi/8
+
+#form a rotation matrix from decomposed values
+
+def Rotation (u, a): # u is a vector, a is angle of rotation
+    Q = np.zeros((3,3))
+    Q[0] = [(u[0]**2)*(1-np.cos(a))+np.cos(a), (u[0]*u[1])*(1-np.cos(a))+np.sin(a), (u[0]*u[2])*(1-np.cos(a))-np.sin(a)]
+    Q[1] = [(u[0]*u[1])*(1-np.cos(a))-np.sin(a), (u[1]**2)*(1-np.cos(a))+np.cos(a), (u[2]*u[1])*(1-np.cos(a))+np.sin(a)]
+    Q[2] = [(u[0]*u[2])*(1-np.cos(a))+np.sin(a), (u[2]*u[1])*(1-np.cos(a))-np.sin(a), (u[2]**2)*(1-np.cos(a))+np.cos(a)]
+    
+    return Q
+
         
         
         
