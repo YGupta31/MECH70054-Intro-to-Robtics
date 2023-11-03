@@ -79,3 +79,18 @@ BA_T = T_hom(Q_yaxis(theta), B_0)
 print(BA_T)#check homogenous tarnsformation
 P_A = MatMul_hom(BA_T, P_B)
 print(P_A) #check position vector
+
+#%%
+
+##Q4
+# 4a check written answers
+R=[[(np.sqrt(2))/2, -0.5, -0.5], [0.5, ((np.sqrt(2))/4)+0.5, ((np.sqrt(2))/4)-0.5], [0.5,((np.sqrt(2))/4)-0.5, ((np.sqrt(2))/4)+0.5]]    
+    
+    
+    
+    
+    
+    
+    
+    
+    
