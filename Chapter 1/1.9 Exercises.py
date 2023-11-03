@@ -99,8 +99,30 @@ def decomp_Rot (Q): #Function to decompose a rotation matrix Q into its angle an
     return (u,alpha)
 
 #Answer
-
-print(decomp_Rot(R))    
+(n,theta) = decomp_Rot(R)
+print(n)
+print(theta)    
     
-#4c   
+#4c Eular Parameters e
+
+def Eular_Param(u,a): #Function to find the Eular parameters for an axis of rotation u and angle alpha
+    E = np.zeros ((4,1))
+    for i in range(0, len(E)):
+        if i == 3:
+            E[i] = np.cos(a/2)
+        else:
+            E[i] = u[i]*(np.sin(a/2))
+    
+    return E
+
+e = Eular_Param(n, theta)
+
+print(e)
+        
+        
+        
+        
+        
+        
+        
     
