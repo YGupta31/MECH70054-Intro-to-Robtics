@@ -63,4 +63,31 @@ def T_hom (Q, V): #Rotation matrix Q and translation vector V
                     T[i][j]=Q[i][j]
     return T
 
-            
+# Matrix multiplication
+def MatMult(A,B):
+    M = len(A) # rows of A
+    NA = len(A[0]) # columns of A
+    NB = len(B) # rows of B
+    P = len(B[0]) # columns of B
+    # define ranges
+    RM = range(0,M)
+    RN = range(0,NA)
+    RP = range(0,P)
+    # check that dimensions are compatible
+    if NA == NB:
+        # compute the product C = A * B
+        C = []
+        for i in RM:
+            # compute row i of the matrix
+            row = []
+            for j in RP:
+                # compute column j, i.e. element C[i][j]
+                Sum = 0
+                for k in RN:
+                    Sum += A[i][k] * B[k][j]
+                row += [Sum] # append this column
+            C += [row] # append this row
+    else:
+        # dimensions not compatible
+        C = 0
+    return C
