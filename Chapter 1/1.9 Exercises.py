@@ -52,7 +52,7 @@ def Q_yaxis (rad):
 
 def T_hom (Q, V): #Rotation matrix Q and translation vector V
     T=np.zeros((4,4))
-    for i in range(0,len(T)-1):
+    for i in range(0,len(T)):
         if i==3:
             T[i][3]=1
         else:
@@ -62,3 +62,10 @@ def T_hom (Q, V): #Rotation matrix Q and translation vector V
                 elif j<3:
                     T[i][j]=Q[i][j]
     return T
+
+def MatMul_hom (T, P): #Matrix Multiplication of a homogenous transformation T and a position vector P
+    P_hom = P+[1] #convert P into homogeneous form
+    P_out = np.matmul(T,P_hom)
+    
+    P_A = P[0:3] # remove homogeenous form
+    return P_A
