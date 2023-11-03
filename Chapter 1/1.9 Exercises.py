@@ -48,4 +48,19 @@ def Q_yaxis (rad):
                     T[i][j] = np.cos(theta - (j-i)*np.pi/2)
     return T
 
-#Form 
+#Form homogeneous matrix
+
+def T_hom (Q, V): #Rotation matrix Q and translation vector V
+    T=np.zeros((4,4))
+    for i in range(0,len(T)):
+        if i==4:
+            T[i][4]=1
+        else:
+            for j in range(0, len(T[i])):
+                if j==3:
+                    T[i][j]=V[i]
+                else:
+                    T[i][j]=Q[i][j]
+    return T
+
+            
