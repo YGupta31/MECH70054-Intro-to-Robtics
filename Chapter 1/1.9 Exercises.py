@@ -135,9 +135,29 @@ def Rotation (u, a): # u is a vector, a is angle of rotation
     return Q
 
 print (Rotation(n, theta))
+
+#%%
+#Q6
+
+# Combine Definitions from Question 3
+
+def HT(R, B0, Pb):# rotation matrix R, Origin of B relative {A}, Point relative to {B}
+    T=np.zeros((4,4))
+    for i in range(0,len(T)):
+        if i==3:
+            T[i][3]=1
+        else:
+            for j in range(0, len(T[i])):
+                if j==3:
+                    T[i][j]=B0[i]
+                elif j<3:
+                    T[i][j]=R[i][j]
         
-        
-        
+    P_bhom = Pb+[1] #convert P into homogeneous form
+    P_ahom = np.matmul(T,P_bhom)
+    
+    Pa = P_ahom[0:3] # remove homogeenous form
+    return Pa    
         
         
     
