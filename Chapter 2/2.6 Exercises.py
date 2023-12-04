@@ -17,7 +17,8 @@ def mm_1_T(a_m0,alpha_m0,d_m1, theta_m1):#base to end effecetor matrix homogenou
     return T
 
 
-
+#%%
+#Q1
 
 
 
