@@ -48,15 +48,15 @@ def Tm01 (theta1): # theta1 must be an angle
 
 
 def Tm12 (theta2): # theta2 must be an agnle 
-    T = [[np.cos(theta2*(np.pi/180)), -np.sin(theta2*(np.pi/180)), 0, 0], [0, 0, 1, (b)], [-np.sin(theta2*(np.pi/180)), -np.cos(theta2*(np.pi/180)), 0, 0], [0, 0, 0, 1]]
+    T = [[np.sin(theta2*(np.pi/180)), np.cos(theta2*(np.pi/180)), 0, 0], [0, 0, 1, (b)], [np.cos(theta2*(np.pi/180)), -np.sin(theta2*(np.pi/180)), 0, 0], [0, 0, 0, 1]]
     return T
 
 def Tm23 (distance3): # distance3 must be a length
-    T = [[1, 0, 0, 0], [0, 0, 1, distance3+L2], [0, -1, 0, 0], [0, 0, 0, 1]]
+    T = [[1, 0, 0, L2], [0, 0, 1, distance3], [0, -1, 0, 0], [0, 0, 0, 1]]
     return T
 
 def Tm34 (theta4): # theta4 must be an angle
-    T = [[np.cos(theta4*(np.pi/180)), -np.sin(theta4*(np.pi/180)), 0, L3], [0, 0, -1, -c], [np.sin(theta4*(np.pi/180)), np.cos(theta4*(np.pi/180)), 0, 0], [0, 0, 0, 1]]
+    T = [[-np.sin(theta4*(np.pi/180)), -np.cos(theta4*(np.pi/180)), 0, L3], [0, 0, -1, -c], [np.cos(theta4*(np.pi/180)), -np.sin(theta4*(np.pi/180)), 0, 0], [0, 0, 0, 1]]
     return T
 
 T45 = [[1, 0, 0, L4], [0, 0, -1, -e], [0, 1, 0, 0], [0, 0, 0, 1]]
@@ -281,20 +281,43 @@ def PV (i1Ri, iVi, iomegai, iPoi1, ddoti1):
 
 # velocity of link 1 relative to frame {1}
 
-1V1
+1V1 = RV(i1Ri, iVi, iomegai, iPoi1)
+
+1Omega1 = Romega(i1Ri, iomegai, thetadoti1)
 
 # velocity of link 2 realtive to frame {2}
 
+2V2 = RV(i1Ri, iVi, iomegai, iPoi1)
+
+2Omega2 = Romega(i1Ri, iomegai, thetadoti1)
 
 # velocity of link 3 relative to frame {3}
 
+3V3 = PV(i1Ri, iVi, iomegai, iPoi1, ddoti1)
+
+3Omega3 = Pomega(i1Ri, iomegai)
 
 # velocity of link 4 realyive to frame {4}
 
+4V4 = RV(i1Ri, iVi, iomegai, iPoi1)
+
+4Omega4 = Romega(i1Ri, iomegai, thetadoti1)
 
 # velocity of link 5 realtive to frame {5}
 
+5V5 = 4V4
+
+5Omega5 = 4Omega4
 
 # velocity of end effector relative to base
 
+0V5 = np.matmul(0R5, 5V5)
+
+0Omega5 = np.matmul(0R5, 5Omega5)
+
+# Determine Jacobian
+
+J = [0V5[0]]
+
+#
 
