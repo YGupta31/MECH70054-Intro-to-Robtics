@@ -230,3 +230,68 @@ ax3.scatter(x3, y3, z3, c='g')
 ax3.scatter(x4, y4, z4, c='g')
 ax3.scatter(x5,y5, z5, marker ='^', c='b')
 plt.show()
+#%%
+
+#calculating Jacobian
+#determine velocities of links
+
+#velocity equations
+
+
+
+# angular velocity 
+
+## revolute joint
+
+def Romega (i1Ri, iomegai, thetadoti1):
+    
+    omega = np.matmul(i1Ri,iomegai) + [0,0,thetadoti1] 
+    
+    return omega
+
+## prismatic joint
+
+def Pomega (i1Ri, iomegai):
+    
+    omega = np.matmul(i1Ri,iomegai)
+    
+    return omega
+
+# linear velocity
+
+## revolute joint
+
+def RV (i1Ri, iVi, iomegai, iPoi1):
+    
+    iVi1 = iVi + np.cross(iomegai, iPoi1)
+    
+    V = np.matmul(i1Ri,iVi1)
+    
+    return V
+
+## prismatic joint
+
+def PV (i1Ri, iVi, iomegai, iPoi1, ddoti1):
+    
+    iVi1 = iVi + np.cross(iomegai, iPoi1)
+    
+    V = np.matmul(i1Ri, iVi)
+
+# velocity of link 1 relative to frame {1}
+
+
+# velocity of link 2 realtive to frame {2}
+
+
+# velocity of link 3 relative to frame {3}
+
+
+# velocity of link 4 realyive to frame {4}
+
+
+# velocity of link 5 realtive to frame {5}
+
+
+# velocity of end effector relative to base
+
+
